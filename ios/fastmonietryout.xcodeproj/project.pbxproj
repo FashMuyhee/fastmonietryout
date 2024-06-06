@@ -12,11 +12,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3DC74EF19BDC4BC09BF36C3C /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E565B396B064FB58AA809DF /* DMSans-Bold.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-fastmonietryout-fastmonietryoutTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-fastmonietryout-fastmonietryoutTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		EA6539139677EF55F8EBDB0B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B5BA2E2D1A7606F0470BE2EF /* PrivacyInfo.xcprivacy */; };
-		3DC74EF19BDC4BC09BF36C3C /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E565B396B064FB58AA809DF /* DMSans-Bold.ttf */; };
 		A0C9AC49CF644FC79ED1C136 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18E635180363450A9B1F8A0B /* DMSans-Regular.ttf */; };
+		EA6539139677EF55F8EBDB0B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B5BA2E2D1A7606F0470BE2EF /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = fastmonietryout/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = fastmonietryout/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = fastmonietryout/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		18E635180363450A9B1F8A0B /* DMSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Regular.ttf"; path = "../src/assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-fastmonietryout-fastmonietryoutTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fastmonietryout-fastmonietryoutTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E565B396B064FB58AA809DF /* DMSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DMSans-Bold.ttf"; path = "../src/assets/fonts/DMSans-Bold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-fastmonietryout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastmonietryout.debug.xcconfig"; path = "Target Support Files/Pods-fastmonietryout/Pods-fastmonietryout.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-fastmonietryout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastmonietryout.release.xcconfig"; path = "Target Support Files/Pods-fastmonietryout/Pods-fastmonietryout.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-fastmonietryout-fastmonietryoutTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastmonietryout-fastmonietryoutTests.debug.xcconfig"; path = "Target Support Files/Pods-fastmonietryout-fastmonietryoutTests/Pods-fastmonietryout-fastmonietryoutTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -49,8 +51,6 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-fastmonietryout-fastmonietryoutTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fastmonietryout-fastmonietryoutTests.release.xcconfig"; path = "Target Support Files/Pods-fastmonietryout-fastmonietryoutTests/Pods-fastmonietryout-fastmonietryoutTests.release.xcconfig"; sourceTree = "<group>"; };
 		B5BA2E2D1A7606F0470BE2EF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = fastmonietryout/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		2E565B396B064FB58AA809DF /* DMSans-Bold.ttf */ = {isa = PBXFileReference; name = "DMSans-Bold.ttf"; path = "../src/assets/fonts/DMSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		18E635180363450A9B1F8A0B /* DMSans-Regular.ttf */ = {isa = PBXFileReference; name = "DMSans-Regular.ttf"; path = "../src/assets/fonts/DMSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +115,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5BFD9CD602EE4D37B9F69EDC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2E565B396B064FB58AA809DF /* DMSans-Bold.ttf */,
+				18E635180363450A9B1F8A0B /* DMSans-Regular.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,16 +167,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		5BFD9CD602EE4D37B9F69EDC /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				2E565B396B064FB58AA809DF /* DMSans-Bold.ttf */,
-				18E635180363450A9B1F8A0B /* DMSans-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
