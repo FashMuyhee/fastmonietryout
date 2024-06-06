@@ -3,45 +3,45 @@ import {ReduxRootState} from 'redux-store/store';
 
 interface AuthState {
   isAuthenticated: boolean;
-  user: User | null;
   token: string | null;
+  uid: string;
 }
-
-export type User = {
-  email: string;
-  firstName: string;
-  lastName: string;
-  id: string;
-};
 
 const initialState: AuthState = {
   isAuthenticated: false,
-  user: null,
   token: null,
+  uid: '',
 };
+
+function extractIdFromToken(token: string) {
+  const indexOfX = token.indexOf('X');
+
+  if (indexOfX !== -1) {
+    return token[indexOfX + 1];
+  } else {
+    return '';
+  }
+}
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     login: (state, action: PayloadAction<string>) => {
+      const id = extractIdFromToken(action.payload);
       state.isAuthenticated = true;
       state.token = action.payload;
+      state.uid = id;
     },
-    register: (state, action: PayloadAction<{user: User; token: string}>) => {
-      state.isAuthenticated = true;
-      state.token = action.payload.token;
-      state.user = action.payload.user;
-    },
+
     logout: state => {
       state.isAuthenticated = false;
-      state.user = null;
       state.token = null;
     },
   },
 });
 
-export const {login, logout, register} = authSlice.actions;
+export const {login, logout} = authSlice.actions;
 export const selectAuth = (state: ReduxRootState) => state.auth;
 
 export const authReducer = authSlice.reducer;
