@@ -5,7 +5,7 @@ import {COLORS, FONTS} from 'utils';
 import {Text} from './Text';
 import {EyeCloseIcon, EyeOpenIcon} from 'components/icons';
 
-export const TextInput = React.forwardRef<RNTextInput, TextInputProps>((props, ref) => {
+export const TextInput = (props: TextInputProps) => {
   const {returnKeyType = 'next', placeholder, value, errorMessage, mb = 15, onChangeText, disabled, inputType = 'text'} = props;
 
   const [isFocus, setIsFocus] = React.useState(false);
@@ -61,7 +61,6 @@ export const TextInput = React.forwardRef<RNTextInput, TextInputProps>((props, r
         }}>
         <View style={{flexGrow: 1}}>
           <RNTextInput
-            ref={ref}
             selectionColor={COLORS.PRIMARY}
             cursorColor={COLORS.BLACK}
             value={value}
@@ -113,4 +112,4 @@ export const TextInput = React.forwardRef<RNTextInput, TextInputProps>((props, r
       )}
     </View>
   );
-});
+};
