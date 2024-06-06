@@ -4,30 +4,32 @@ import {NavigationProp} from '@react-navigation/native';
 import {AuthScreens} from 'routes';
 import {AuthWrapper} from '../component';
 import {COLORS} from 'utils';
-import {LoginFormPayload} from '../api';
+import {LoginFormPayload, useLogin} from '../api';
 import {useForm} from 'hooks';
 import {useAppDispatch, login, useAppSelector} from 'redux-store';
-// import useForm from '@hooks/useForm';
-// import {LoginPayload, useLogin} from '../api';
 
 type Props = {
   navigation: NavigationProp<AuthScreens>;
 };
 
 export const LoginScreen = ({navigation}: Props) => {
-  // const {post, isLoading} = useLogin();
+  const {mutate, isPending} = useLogin();
   const dispatch = useAppDispatch();
   const {isAuthenticated, user} = useAppSelector(state => state.auth);
-  console.log("🚀 ~ LoginScreen ~ sAuthenticated, user:", isAuthenticated, user)
-  
+
   const {values, handleSubmit, register, errors} = useForm<LoginFormPayload>({
-    defaultValues: {email: '', password: ''},
+    defaultValues: {
+      email: 'eve.holt@reqres.in',
+      password: 'cityslicka',
+    },
     validationRule: {email: 'email', password: 'password'},
   });
 
   const onSubmit = (v: LoginFormPayload) => {
-    console.log(v);
-    dispatch(login(v));
+    mutate(v, {
+      onSuccess: ({data}) => {
+      },
+    });
   };
 
   return (
@@ -53,7 +55,7 @@ export const LoginScreen = ({navigation}: Props) => {
         placeholder="Password"
         inputType="password"
       />
-      <Button text="Login" onPress={() => handleSubmit(onSubmit)} />
+      <Button text="Login" isLoading={isPending} onPress={() => handleSubmit(onSubmit)} />
       <Text onPress={() => navigation.navigate('register')} textAlign="center" style={{marginTop: 20}}>
         Don't have an account ? <Text color={COLORS.BLUE}>Register</Text>
       </Text>

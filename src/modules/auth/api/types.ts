@@ -9,3 +9,11 @@ export interface RegisterFormPayload {
   lastName: string;
   firstName: string;
 }
+
+export interface LoginResponse {
+  token: string;
+}
+
+export interface ErrorResponse {
+  error: string;
+}
