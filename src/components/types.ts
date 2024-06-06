@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import {KeyboardType, ReturnKeyType, StyleProp, TextStyle, ViewStyle} from 'react-native';
 
 export interface ButtonProps {
   onPress?: () => void;
@@ -37,4 +37,18 @@ export interface IconButtonProps {
   disabled?: boolean;
   rounded?: boolean;
   bg?: string;
+}
+
+export interface TextInputProps {
+  keyboardType?: KeyboardType;
+  returnKeyType?: ReturnKeyType;
+  placeholder?: string;
+  secureText?: boolean;
+  errorMessage?: string;
+  required?: boolean;
+  mb?: number;
+  disabled?: boolean;
+  rightIcon?: React.ReactElement;
+  value?: string;
+  onChangeText?: (t: string) => void;
 }
