@@ -2,7 +2,7 @@ import {httpHandler} from 'utils';
 import {ErrorResponse, LoginFormPayload, LoginResponse, RegisterFormPayload, RegisterResponse} from './types';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {AxiosError, AxiosResponse} from 'axios';
-import {login, register, useAppDispatch} from 'redux-store';
+import {login, useAppDispatch} from 'redux-store';
 import Toast from 'react-native-toast-message';
 
 async function registerUser(form: LoginFormPayload) {
@@ -23,7 +23,7 @@ async function createUser(form: RegisterFormPayload) {
     const res: AxiosResponse<RegisterResponse> = await httpHandler.post('/user', form);
     if (res.data) {
       if (registerRes?.token) {
-        return {...res.data, token: registerRes.token as string};
+        return registerRes;
       }
     }
   } catch (e) {
@@ -43,7 +43,6 @@ export function useLogin() {
     onSuccess: ({data}, v) => {
       dispatch(login(data.token));
       queryClient.invalidateQueries({queryKey: ['USER']});
-      Toast.show({text1: 'Login Successfully', type: 'success'});
     },
     onError: e => {
       const err = e.response?.data.error;
@@ -65,8 +64,8 @@ export function useRegister() {
       return createUser(payload);
     },
     onSuccess: data => {
-      const {token, ...user} = data as RegisterResponse;
-      dispatch(register({token: token, user: user}));
+      const {token} = data as LoginResponse;
+      dispatch(login(token));
       queryClient.invalidateQueries({queryKey: ['USER']});
       Toast.show({text1: 'Registration Complete', type: 'success'});
     },

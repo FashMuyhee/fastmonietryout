@@ -2,9 +2,8 @@ import React from 'react';
 import {Button, ScreenWrapper, TextInput} from 'components';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {ProtectedScreens} from 'routes';
-import {useAppSelector} from 'redux-store';
 import {ScrollView} from 'react-native';
-import {UpdateProfileFormPayload} from '../api';
+import {UpdateProfileFormPayload, useGetUser, useUpdateProfile} from '../api';
 import {useForm} from 'hooks';
 
 type Props = {
@@ -12,16 +11,22 @@ type Props = {
 };
 
 export const UpdateProfileScreen = ({navigation}: Props) => {
-  const {token, user} = useAppSelector(state => state.auth);
-  // const {isPending, mutate} = useRegister();
+  const {isPending, mutate} = useUpdateProfile();
+  const {data} = useGetUser();
+
   const {values, handleSubmit, register, errors} = useForm<UpdateProfileFormPayload>({
-    defaultValues: {firstName: '', bio: '', lastName: ''},
-    validationRule: {bio: 'text', firstName: 'string', lastName: 'string'},
+    defaultValues: {firstName: data?.first_name as string, lastName: data?.last_name as string},
+    validationRule: {firstName: 'string', lastName: 'string'},
   });
 
   const onSubmit = (v: UpdateProfileFormPayload) => {
-    // mutate(v);
+    mutate(v, {
+      onSuccess: () => {
+        navigation.goBack();
+      },
+    });
   };
+
   return (
     <ScreenWrapper noEdges>
       <ScrollView keyboardDismissMode="interactive" keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets>
@@ -41,18 +46,9 @@ export const UpdateProfileScreen = ({navigation}: Props) => {
           returnKeyType="next"
           errorMessage={errors?.lastName}
         />
-        <TextInput placeholder="Email" mb={20} returnKeyType="next" disabled />
-        <TextInput
-          value={values?.bio}
-          onChangeText={v => register({name: 'bio', value: v})}
-          placeholder="Bio"
-          mb={20}
-          returnKeyType="next"
-          errorMessage={errors?.bio as string}
-          multiline
-        />
+        <TextInput value={data?.email} placeholder="Email" mb={20} returnKeyType="next" disabled />
 
-        <Button text="Save Changes" onPress={() => handleSubmit(onSubmit)} />
+        <Button text="Save Changes" isLoading={isPending} onPress={() => handleSubmit(onSubmit)} />
       </ScrollView>
     </ScreenWrapper>
   );

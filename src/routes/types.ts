@@ -5,5 +5,5 @@ export type AuthScreens = {
 
 export type ProtectedScreens = {
   profile: undefined;
-  edit_profile: undefined;
+  update_profile: undefined;
 };

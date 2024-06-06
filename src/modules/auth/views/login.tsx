@@ -6,7 +6,6 @@ import {AuthWrapper} from '../component';
 import {COLORS} from 'utils';
 import {LoginFormPayload, useLogin} from '../api';
 import {useForm} from 'hooks';
-import {useAppDispatch, login, useAppSelector} from 'redux-store';
 
 type Props = {
   navigation: NavigationProp<AuthScreens>;
@@ -14,8 +13,6 @@ type Props = {
 
 export const LoginScreen = ({navigation}: Props) => {
   const {mutate, isPending} = useLogin();
-  const dispatch = useAppDispatch();
-  const {isAuthenticated, user} = useAppSelector(state => state.auth);
 
   const {values, handleSubmit, register, errors} = useForm<LoginFormPayload>({
     defaultValues: {
@@ -26,10 +23,7 @@ export const LoginScreen = ({navigation}: Props) => {
   });
 
   const onSubmit = (v: LoginFormPayload) => {
-    mutate(v, {
-      onSuccess: ({data}) => {
-      },
-    });
+    mutate(v);
   };
 
   return (
