@@ -4,7 +4,7 @@ import {TextProps} from './types';
 import {COLORS, FONTS} from '../utils';
 
 export const Text: React.FunctionComponent<TextProps> = ({
-  styles,
+  style,
   children,
   isBold,
   fontSize = 14,
@@ -24,7 +24,7 @@ export const Text: React.FunctionComponent<TextProps> = ({
   return (
     <RNText
       onPress={onPress}
-      style={[{textTransform, fontFamily, color, fontSize, textAlign}, styles]}
+      style={[{textTransform, fontFamily, color, fontSize, textAlign}, style]}
       numberOfLines={truncate ? (numberLines ? numberLines : 1) : numberLines}
       lineBreakMode="tail"
       textBreakStrategy="simple"

@@ -8,7 +8,7 @@ export interface ButtonProps {
 
 export interface TextProps {
   children?: string | undefined | React.ReactNode;
-  styles?: StyleProp<TextStyle>;
+  style?: StyleProp<TextStyle>;
   color?: string;
   isBold?: boolean;
   fontSize?: number;
