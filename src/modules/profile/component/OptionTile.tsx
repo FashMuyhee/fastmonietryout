@@ -12,7 +12,7 @@ type Props = {
 
 export const OptionTile = ({subtitle, title, onPress, icon}: Props) => {
   return (
-    <TouchableOpacity
+    <TouchableOpacity activeOpacity={0.6}
       onPress={onPress}
       style={{
         height: 65,
