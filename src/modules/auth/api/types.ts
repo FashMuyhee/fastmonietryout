@@ -12,6 +12,12 @@ export interface RegisterFormPayload {
 
 export interface LoginResponse {
   token: string;
+  id?: string;
+}
+
+export interface RegisterResponse extends Omit<RegisterFormPayload, 'password'> {
+  id: string;
+  token: string;
 }
 
 export interface ErrorResponse {

@@ -3,9 +3,16 @@ import {ReduxRootState} from 'redux-store/store';
 
 interface AuthState {
   isAuthenticated: boolean;
-  user: null;
+  user: User | null;
   token: string | null;
 }
+
+export type User = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  id: string;
+};
 
 const initialState: AuthState = {
   isAuthenticated: false,
@@ -21,6 +28,11 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       state.token = action.payload;
     },
+    register: (state, action: PayloadAction<{user: User; token: string}>) => {
+      state.isAuthenticated = true;
+      state.token = action.payload.token;
+      state.user = action.payload.user;
+    },
     logout: state => {
       state.isAuthenticated = false;
       state.user = null;
@@ -29,7 +41,7 @@ const authSlice = createSlice({
   },
 });
 
-export const {login, logout} = authSlice.actions;
+export const {login, logout, register} = authSlice.actions;
 export const selectAuth = (state: ReduxRootState) => state.auth;
 
 export const authReducer = authSlice.reducer;
