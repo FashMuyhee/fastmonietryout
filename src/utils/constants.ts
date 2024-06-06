@@ -15,6 +15,8 @@ export const COLORS = {
   PRIMARY: '#cdeb40',
   WHITE: '#FFF',
   BLACK: '#2d2d2d',
+  RED: '#f44336',
+  GREY:'#B6B6B6'
 };
 
 export const SCREEN_PADDING = 15;
