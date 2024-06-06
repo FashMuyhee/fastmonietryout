@@ -6,6 +6,7 @@ import {logout, useAppDispatch} from 'redux-store';
 import {OptionTile, ProfileCard} from '../component';
 import {ScrollView} from 'react-native';
 import {useQueryClient} from '@tanstack/react-query';
+import {COLORS} from 'utils';
 
 type Props = {
   navigation: StackNavigationProp<ProtectedScreens, 'profile'>;
@@ -21,7 +22,7 @@ export const ProfileScreen = ({navigation}: Props) => {
   };
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper barColor={COLORS.OFF_WHITE}>
       <ProfileCard />
       <ScrollView bounces={false}>
         <OptionTile
