@@ -39,16 +39,16 @@ export interface IconButtonProps {
   bg?: string;
 }
 
+export type TextInputType = 'text' | 'password' | 'email';
+
 export interface TextInputProps {
-  keyboardType?: KeyboardType;
   returnKeyType?: ReturnKeyType;
   placeholder?: string;
-  secureText?: boolean;
-  errorMessage?: string;
+  errorMessage?: string | null;
   required?: boolean;
   mb?: number;
   disabled?: boolean;
-  rightIcon?: React.ReactElement;
   value?: string;
   onChangeText?: (t: string) => void;
+  inputType?: TextInputType;
 }

@@ -1,7 +1,7 @@
 import {TouchableNativeFeedback, StyleSheet, ActivityIndicator, View} from 'react-native';
 import React from 'react';
 import {ButtonProps} from './types';
-import {COLORS} from '../utils';
+import {COLORS} from 'utils';
 import {Text} from './Text';
 
 export const Button = ({onPress, text, isLoading}: ButtonProps) => {

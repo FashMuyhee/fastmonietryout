@@ -1,24 +1,30 @@
 import React from 'react';
-import {TextInput as RNTextInput, View} from 'react-native';
+import {KeyboardTypeOptions, Pressable, TextInput as RNTextInput, View} from 'react-native';
 import {TextInputProps} from './types';
-import {COLORS, FONTS} from '../utils';
+import {COLORS, FONTS} from 'utils';
 import {Text} from './Text';
+import {EyeCloseIcon, EyeOpenIcon} from 'components/icons';
 
 export const TextInput = React.forwardRef<RNTextInput, TextInputProps>((props, ref) => {
-  const {
-    keyboardType = 'default',
-    returnKeyType = 'next',
-    placeholder,
-    value,
-    secureText,
-    errorMessage,
-    mb = 15,
-    onChangeText,
-    disabled,
-    rightIcon,
-  } = props;
+  const {returnKeyType = 'next', placeholder, value, errorMessage, mb = 15, onChangeText, disabled, inputType = 'text'} = props;
 
   const [isFocus, setIsFocus] = React.useState(false);
+  const isPasswordField = inputType == 'password';
+
+  const [isTextVisible, setIsTextVisible] = React.useState(isPasswordField);
+
+  const keyboardType = React.useMemo(() => {
+    let options: KeyboardTypeOptions = 'default';
+
+    switch (inputType) {
+      case 'email':
+        options = 'email-address';
+      default:
+        options = 'default';
+        break;
+    }
+    return options;
+  }, [inputType]);
 
   const getBorderColor = () => {
     let color = COLORS.GREY;
@@ -34,6 +40,10 @@ export const TextInput = React.forwardRef<RNTextInput, TextInputProps>((props, r
     }
     return color;
   };
+
+  const onTogglePasswordVisible = React.useCallback(() => {
+    setIsTextVisible(prev => !prev);
+  }, [isPasswordField]);
 
   return (
     <View style={{marginBottom: mb, width: '100%'}}>
@@ -77,15 +87,23 @@ export const TextInput = React.forwardRef<RNTextInput, TextInputProps>((props, r
             textAlignVertical="auto"
             onBlur={() => setIsFocus(false)}
             onFocus={() => setIsFocus(true)}
-            secureTextEntry={secureText}
+            secureTextEntry={isTextVisible}
             focusable
             autoCapitalize="none"
           />
         </View>
-        {rightIcon && (
-          <View style={{height: 30, alignItems: 'center', justifyContent: 'center', minWidth: 30, maxWidth: 50}}>
-            {rightIcon}
-          </View>
+        {isPasswordField && (
+          <Pressable
+            onPress={onTogglePasswordVisible}
+            style={{
+              height: 30,
+              alignItems: 'center',
+              justifyContent: 'center',
+              minWidth: 30,
+              maxWidth: 50,
+            }}>
+            {isTextVisible ? <EyeCloseIcon /> : <EyeOpenIcon />}
+          </Pressable>
         )}
       </View>
       {Number(errorMessage?.length) > 0 && (

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Edge, SafeAreaView} from 'react-native-safe-area-context';
 import {ScreenWrapperProps} from './types';
-import {SCREEN_HEIGHT, SCREEN_PADDING} from '../utils';
+import {SCREEN_HEIGHT, SCREEN_PADDING} from 'utils';
 
 export const ScreenWrapper = ({children, bg, padding = SCREEN_PADDING, noEdges = false, style}: ScreenWrapperProps) => {
   bg = bg ? bg : '#F4F4F4';
