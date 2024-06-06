@@ -24,10 +24,30 @@ export const ProfileScreen = ({navigation}: Props) => {
     <ScreenWrapper>
       <ProfileCard />
       <ScrollView bounces={false}>
-        <OptionTile icon={<AccountIcon />} title="Account" subtitle="Privacy,security,change password ..." />
-        <OptionTile icon={<ChatIcon />} title="Messaging" subtitle="Message History, Wallpaper" />
-        <OptionTile icon={<BellIcon />} title="Notification" subtitle="Messages, Call tunes & Channels" />
-        <OptionTile icon={<HelpIcon />} title="Help" subtitle="FAQs, Privacy Policy & Contact Us" />
+        <OptionTile
+          icon={<AccountIcon />}
+          title="Account"
+          subtitle="Privacy,security,change password ..."
+          onPress={() => navigation.navigate('account')}
+        />
+        <OptionTile
+          icon={<ChatIcon />}
+          title="Messaging"
+          subtitle="Message History, Wallpaper"
+          onPress={() => navigation.navigate('messaging')}
+        />
+        <OptionTile
+          icon={<BellIcon />}
+          title="Notification"
+          subtitle="Messages, Call tunes & Channels"
+          onPress={() => navigation.navigate('notification')}
+        />
+        <OptionTile
+          icon={<HelpIcon />}
+          title="Help"
+          subtitle="FAQs, Privacy Policy & Contact Us"
+          onPress={() => navigation.navigate('help')}
+        />
         <OptionTile icon={<LogoutIcon />} title="Logout" subtitle="Logout from current profile" onPress={onLogout} />
       </ScrollView>
     </ScreenWrapper>

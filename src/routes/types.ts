@@ -6,4 +6,8 @@ export type AuthScreens = {
 export type ProtectedScreens = {
   profile: undefined;
   update_profile: undefined;
+  account: undefined;
+  messaging: undefined;
+  help: undefined;
+  notification: undefined;
 };

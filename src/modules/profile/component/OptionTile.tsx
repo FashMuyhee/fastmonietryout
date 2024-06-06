@@ -5,17 +5,18 @@ import {COLORS} from 'utils';
 
 type Props = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   onPress?: () => void;
   icon: React.ReactElement;
 };
 
 export const OptionTile = ({subtitle, title, onPress, icon}: Props) => {
   return (
-    <TouchableOpacity activeOpacity={0.6}
+    <TouchableOpacity
+      activeOpacity={0.6}
       onPress={onPress}
       style={{
-        height: 65,
+        height: !!subtitle ? 65 : 55,
         width: '100%',
         flexDirection: 'row',
         columnGap: 10,
@@ -32,7 +33,7 @@ export const OptionTile = ({subtitle, title, onPress, icon}: Props) => {
         <Text isBold fontSize={15}>
           {title}
         </Text>
-        <Text fontSize={12}>{subtitle}</Text>
+        {subtitle && <Text fontSize={12}>{subtitle}</Text>}
       </View>
     </TouchableOpacity>
   );
