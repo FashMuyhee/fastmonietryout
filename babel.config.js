@@ -8,7 +8,7 @@ module.exports = {
       'assets': './src/assets',
       'modules': './src/modules',
       'hooks': './src/hooks',
-      'contexts': './src/contexts',
+      'redux-store': './src/redux-store',
       'routes': './src/routes',
       'configs': './src/configs',
     }
