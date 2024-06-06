@@ -13,13 +13,13 @@ async function registerUser(form: LoginFormPayload) {
     }
   } catch (e) {
     const error = e as unknown as AxiosError<ErrorResponse>;
-    return error.response?.data;
+    throw error.response?.data;
   }
 }
 
 async function createUser(form: RegisterFormPayload) {
   try {
-    const registerRes = (await registerUser(form)) as LoginResponse;
+    const registerRes = await registerUser(form);
     const res: AxiosResponse<RegisterResponse> = await httpHandler.post('/user', form);
     if (res.data) {
       if (registerRes?.token) {
@@ -28,7 +28,11 @@ async function createUser(form: RegisterFormPayload) {
     }
   } catch (e) {
     const error = e as unknown as AxiosError<ErrorResponse>;
-    return error.response?.data;
+    const errorBody = error.response?.data;
+    if (errorBody) {
+      throw errorBody;
+    }
+    throw e;
   }
 }
 
@@ -64,12 +68,17 @@ export function useRegister() {
       return createUser(payload);
     },
     onSuccess: data => {
+      console.log('🚀 ~ useRegister ~ data:', data);
       const {token} = data as LoginResponse;
       dispatch(login(token));
       queryClient.invalidateQueries({queryKey: ['USER']});
       Toast.show({text1: 'Registration Complete', type: 'success'});
     },
     onError: e => {
+      if (e?.error.includes('Note: Only defined users succeed registration')) {
+        Toast.show({text1: 'Invalid test credential', text2: 'Please Try again', type: 'error'});
+        return;
+      }
       Toast.show({text1: 'Error', text2: 'Please Try again', type: 'error'});
     },
   });

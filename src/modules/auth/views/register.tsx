@@ -50,6 +50,7 @@ export const RegisterScreen = ({navigation}: Props) => {
         value={values?.email}
         onChangeText={v => register({name: 'email', value: v})}
         placeholder="Email"
+        inputType="email"
         mb={20}
         returnKeyType="next"
         errorMessage={errors?.email as string}
