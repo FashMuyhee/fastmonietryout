@@ -16,8 +16,8 @@ export const LoginScreen = ({navigation}: Props) => {
 
   const {values, handleSubmit, register, errors} = useForm<LoginFormPayload>({
     defaultValues: {
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
+      email: '',
+      password: '',
     },
     validationRule: {email: 'email', password: 'password'},
   });

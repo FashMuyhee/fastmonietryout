@@ -30,6 +30,11 @@ export const useValidation = (): FieldValidation => {
           error = null;
         } else error = 'Invalid email';
         break;
+      case 'password':
+        if (value.length < 8) {
+          error = '8 Character required';
+        }
+        break;
       default:
         error = null;
         break;
