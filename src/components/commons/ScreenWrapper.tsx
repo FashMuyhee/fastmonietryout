@@ -11,7 +11,9 @@ export const ScreenWrapper = ({children, bg, padding = SCREEN_PADDING, noEdges =
   }, [noEdges]);
 
   return (
-    <SafeAreaView style={[{backgroundColor: bg, paddingHorizontal: padding, height: SCREEN_HEIGHT}, style]} edges={edges}>
+    <SafeAreaView
+      style={[{backgroundColor: bg, paddingHorizontal: padding, height: SCREEN_HEIGHT, paddingTop: 20}, style]}
+      edges={edges}>
       {children}
     </SafeAreaView>
   );

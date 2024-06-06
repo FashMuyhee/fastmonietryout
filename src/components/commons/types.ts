@@ -46,6 +46,7 @@ export interface TextInputProps {
   placeholder?: string;
   errorMessage?: string | null;
   required?: boolean;
+  multiline?: boolean;
   mb?: number;
   disabled?: boolean;
   value?: string;

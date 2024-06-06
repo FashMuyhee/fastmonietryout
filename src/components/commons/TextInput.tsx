@@ -6,7 +6,17 @@ import {Text} from './Text';
 import {EyeCloseIcon, EyeOpenIcon} from 'components/icons';
 
 export const TextInput = (props: TextInputProps) => {
-  const {returnKeyType = 'next', placeholder, value, errorMessage, mb = 15, onChangeText, disabled, inputType = 'text'} = props;
+  const {
+    multiline,
+    returnKeyType = 'next',
+    placeholder,
+    value,
+    errorMessage,
+    mb = 15,
+    onChangeText,
+    disabled,
+    inputType = 'text',
+  } = props;
 
   const [isFocus, setIsFocus] = React.useState(false);
   const isPasswordField = inputType == 'password';
@@ -67,7 +77,7 @@ export const TextInput = (props: TextInputProps) => {
             onChangeText={onChangeText}
             style={{
               backgroundColor: 'transparent',
-              height: 36,
+              height: multiline ? 80 : 36,
               fontSize: 14,
               fontFamily: FONTS.REGULAR,
               color: COLORS.BLACK,
@@ -83,12 +93,13 @@ export const TextInput = (props: TextInputProps) => {
             placeholder={placeholder}
             numberOfLines={1}
             editable={!disabled}
-            textAlignVertical="auto"
+            textAlignVertical={multiline ? 'top' : 'auto'}
             onBlur={() => setIsFocus(false)}
             onFocus={() => setIsFocus(true)}
             secureTextEntry={isTextVisible}
             focusable
             autoCapitalize="none"
+            multiline={multiline}
           />
         </View>
         {isPasswordField && (
