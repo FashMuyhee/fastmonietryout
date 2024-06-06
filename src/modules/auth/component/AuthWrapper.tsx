@@ -1,7 +1,6 @@
 import React from 'react';
-import {ScreenWrapper} from 'components';
-import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
-import {COLORS, IS_ANDROID} from 'utils';
+import {ScrollView, StatusBar, View} from 'react-native';
+import {COLORS, SCREEN_PADDING} from 'utils';
 
 type Props = {
   children: React.ReactNode;
@@ -9,9 +8,14 @@ type Props = {
 
 export const AuthWrapper = ({children}: Props) => {
   return (
-    <ScreenWrapper>
-      {/* <ScrollView keyboardDismissMode="interactive" keyboardShouldPersistTaps="handled"> */}
-      <KeyboardAvoidingView behavior={IS_ANDROID ? 'padding' : 'height'} style={{flex: 1}}>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor={COLORS.OFF_WHITE} />
+      <ScrollView
+        style={{flex: 1, paddingHorizontal: SCREEN_PADDING}}
+        bounces={false}
+        automaticallyAdjustKeyboardInsets
+        keyboardDismissMode="interactive"
+        keyboardShouldPersistTaps="handled">
         <View
           style={{
             alignSelf: 'center',
@@ -24,8 +28,7 @@ export const AuthWrapper = ({children}: Props) => {
           }}
         />
         {children}
-      </KeyboardAvoidingView>
-      {/* </ScrollView> */}
-    </ScreenWrapper>
+      </ScrollView>
+    </>
   );
 };
