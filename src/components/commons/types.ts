@@ -27,6 +27,7 @@ export interface ScreenWrapperProps {
   padded?: boolean;
   noEdges?: boolean;
   style?: StyleProp<ViewStyle>;
+  barColor?: string;
 }
 
 export interface IconButtonProps {
