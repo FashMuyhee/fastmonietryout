@@ -8,7 +8,7 @@ export const Button = ({onPress, text, isLoading}: ButtonProps) => {
   return (
     <TouchableNativeFeedback onPress={onPress} disabled={isLoading}>
       <View style={styles.wrapper}>
-        {isLoading && <ActivityIndicator size="small" color={COLORS.WHITE} />}
+        {isLoading && <ActivityIndicator size="small" color={COLORS.BLACK} />}
         <Text textAlign="center" fontSize={16} isBold>
           {isLoading ? 'Loading' : text}
         </Text>
