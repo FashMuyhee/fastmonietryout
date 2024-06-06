@@ -1,4 +1,4 @@
-import {StyleProp, TextStyle} from 'react-native';
+import {StyleProp, TextStyle, ViewStyle} from 'react-native';
 
 export interface ButtonProps {
   onPress?: () => void;
@@ -18,4 +18,23 @@ export interface TextProps {
   truncate?: boolean;
   truncateLength?: number;
   numberLines?: number;
+}
+
+export interface ScreenWrapperProps {
+  bg?: string;
+  children: React.ReactNode;
+  padding?: number;
+  padded?: boolean;
+  noEdges?: boolean;
+  style?: StyleProp<ViewStyle>;
+}
+
+export interface IconButtonProps {
+  icon: React.ReactElement;
+  style?: StyleProp<ViewStyle>;
+  size?: number;
+  onPress?: () => void;
+  disabled?: boolean;
+  rounded?: boolean;
+  bg?: string;
 }
