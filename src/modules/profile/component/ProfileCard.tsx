@@ -46,8 +46,8 @@ export const ProfileCard = (props: Props) => {
           {`${data?.first_name} ${data?.last_name}`}
         </Text>
         <Text fontSize={12}>{data?.email}</Text>
-        <IconButton onPress={() => navigate('update_profile')} size={20} icon={<EditPen />} style={{alignSelf: 'flex-end'}} />
       </View>
+      <IconButton onPress={() => navigate('update_profile')} size={25} icon={<EditPen />} style={{alignItems: 'flex-end'}} />
     </StackView>
   );
 };
