@@ -6,6 +6,7 @@ import {AuthWrapper} from '../component';
 import {COLORS} from 'utils';
 import {LoginFormPayload} from '../api';
 import {useForm} from 'hooks';
+import {useAppDispatch, login, useAppSelector} from 'redux-store';
 // import useForm from '@hooks/useForm';
 // import {LoginPayload, useLogin} from '../api';
 
@@ -15,6 +16,10 @@ type Props = {
 
 export const LoginScreen = ({navigation}: Props) => {
   // const {post, isLoading} = useLogin();
+  const dispatch = useAppDispatch();
+  const {isAuthenticated, user} = useAppSelector(state => state.auth);
+  console.log("🚀 ~ LoginScreen ~ sAuthenticated, user:", isAuthenticated, user)
+  
   const {values, handleSubmit, register, errors} = useForm<LoginFormPayload>({
     defaultValues: {email: '', password: ''},
     validationRule: {email: 'email', password: 'password'},
@@ -22,6 +27,7 @@ export const LoginScreen = ({navigation}: Props) => {
 
   const onSubmit = (v: LoginFormPayload) => {
     console.log(v);
+    dispatch(login(v));
   };
 
   return (
@@ -45,6 +51,7 @@ export const LoginScreen = ({navigation}: Props) => {
         onChangeText={v => register({name: 'password', value: v})}
         errorMessage={errors?.password}
         placeholder="Password"
+        inputType="password"
       />
       <Button text="Login" onPress={() => handleSubmit(onSubmit)} />
       <Text onPress={() => navigation.navigate('register')} textAlign="center" style={{marginTop: 20}}>

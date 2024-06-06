@@ -4,6 +4,6 @@ export type AuthScreens = {
 };
 
 export type ProtectedScreens = {
-  home: undefined;
+  profile: undefined;
   edit_profile: undefined;
 };

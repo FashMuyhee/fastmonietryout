@@ -18,6 +18,7 @@ export const COLORS = {
   BLACK: '#2d2d2d',
   RED: '#f44336',
   GREY: '#B6B6B6',
+  BLUE: '#0000EE',
 };
 
 export const SCREEN_PADDING = 15;
